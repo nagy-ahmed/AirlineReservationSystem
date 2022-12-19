@@ -1,5 +1,3 @@
-import javax.security.auth.login.CredentialException;
-
 public class Crew extends Person {
     private String username = "123";
     private String password = "123";
