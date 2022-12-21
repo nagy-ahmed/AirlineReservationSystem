@@ -1,3 +1,4 @@
+package Model;
 public class Flight {
     private int number;
     private Airport departure;

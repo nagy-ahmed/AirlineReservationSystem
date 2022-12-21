@@ -1,5 +1,6 @@
+package Model;
+
 import java.text.MessageFormat;
-import java.util.Set;
 import java.util.*;
 
 public class ScheduledFlight {
@@ -9,7 +10,7 @@ public class ScheduledFlight {
     private Flight flight;
     private double price;
     private Set<Passenger> passengers;
-    private Set<Crew> crews;
+    private Set<Crew> Crews = new HashSet<Crew>();
 
     public void setMaxcapacity(int maxcapacity) {
         if (maxcapacity <= 0) {
@@ -41,36 +42,30 @@ public class ScheduledFlight {
 
     // return ture if added successed ,false if already added once
     public boolean AddPassenger(Passenger p) {
-        if (passengers.contains(p) || currentcapacity >= maxcapacity)
-            return false;
-        passengers.add(p);
-        currentcapacity++;
-        return true;
+        if (passengers.add(p)) {
+            currentcapacity++;
+            return true;
+        }
+        return false;
     }
 
     // return ture if removed successed ,false if passenger is not exist
     public boolean RemovePassenger(Passenger p) {
-        if (!passengers.contains(p))
-            return false;
-        passengers.remove(p);
-        currentcapacity--;
-        return true;
+        if (passengers.remove(p)) {
+            currentcapacity--;
+            return true;
+        }
+        return false;
     }
 
     // return ture if added successed ,false if already added once
     public boolean AddCrew(Crew c) {
-        if (crews.contains(c))
-            return false;
-        crews.add(c);
-        return true;
+        return Crews.add(c) ? true : false;
     }
 
     // return ture if removed successed ,false if passenger is not exist
     public boolean RemoveCrew(Crew c) {
-        if (!crews.contains(c))
-            return false;
-        crews.remove(c);
-        return true;
+        return Crews.remove(c) ? true : false;
     }
 
     public void GetDescription() {
@@ -81,4 +76,14 @@ public class ScheduledFlight {
         System.out.println(MessageFormat.format("Max Capacity is {0} Current is {1}", maxcapacity, currentcapacity));
     }
 
+    public void GetFlightCrews() {
+        System.out.println(MessageFormat.format("Crew of flight : {0} is", flight.getNumber()));
+        if (Crews == null || Crews.size() == 0) {
+            System.out.println("No Crew is added yet");
+            return;
+        }
+        for (Crew Crew : Crews) {
+            System.out.println(MessageFormat.format("-{0} ->{1}", Crew.getName(), Crew.getJob()));
+        }
+    }
 }
