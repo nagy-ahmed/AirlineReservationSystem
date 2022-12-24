@@ -4,13 +4,13 @@ import java.text.MessageFormat;
 import java.util.*;
 
 public class ScheduledFlight {
-    private int maxcapacity;
-    private int currentcapacity = 0;
     private Date date;
     private Flight flight;
     private double price;
-    private Set<Passenger> passengers;
-    private Set<Crew> Crews = new HashSet<Crew>();
+    private int currentcapacity = 0;
+    private int maxcapacity;
+    private Set<Passenger> passengers = new HashSet<Passenger>();
+    private Set<Employee> Employees = new HashSet<Employee>();
 
     public void setMaxcapacity(int maxcapacity) {
         if (maxcapacity <= 0) {
@@ -40,6 +40,53 @@ public class ScheduledFlight {
         this.price = price;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getCurrentcapacity() {
+        return currentcapacity;
+    }
+
+    public int getMaxcapacity() {
+        return maxcapacity;
+    }
+
+    public void getPassengers() {
+        System.out.println(MessageFormat.format("Passengers of flight : {0} is", flight.getNumber()));
+        if (passengers == null || passengers.size() == 0) {
+            System.out.println("No Passenger is added yet");
+            return;
+        }
+        int i = 1;
+        for (Passenger passenger : passengers) {
+            System.out.println(MessageFormat.format("{0}-{1} {2}", i, passenger.getfName(), passenger.getlName()));
+            i++;
+        }
+    }
+
+    public void getEmployees() {
+        System.out.println(MessageFormat.format("Employee of flight : {0} is", flight.getNumber()));
+        if (Employees == null || Employees.size() == 0) {
+            System.out.println("No Employee is added yet");
+            return;
+        }
+        int i = 1;
+        for (Employee Employee : Employees) {
+            System.out.println(MessageFormat.format("{0}-{1} {2} --{3}", i, Employee.getfName(), Employee.getlName(),
+                    Employee.getJob()));
+            i++;
+        }
+    }
+
     // return ture if added successed ,false if already added once
     public boolean AddPassenger(Passenger p) {
         if (passengers.add(p)) {
@@ -59,13 +106,13 @@ public class ScheduledFlight {
     }
 
     // return ture if added successed ,false if already added once
-    public boolean AddCrew(Crew c) {
-        return Crews.add(c) ? true : false;
+    public boolean AddEmployee(Employee c) {
+        return Employees.add(c) ? true : false;
     }
 
     // return ture if removed successed ,false if passenger is not exist
-    public boolean RemoveCrew(Crew c) {
-        return Crews.remove(c) ? true : false;
+    public boolean RemoveEmployee(Employee c) {
+        return Employees.remove(c) ? true : false;
     }
 
     public void GetDescription() {
@@ -76,14 +123,23 @@ public class ScheduledFlight {
         System.out.println(MessageFormat.format("Max Capacity is {0} Current is {1}", maxcapacity, currentcapacity));
     }
 
-    public void GetFlightCrews() {
-        System.out.println(MessageFormat.format("Crew of flight : {0} is", flight.getNumber()));
-        if (Crews == null || Crews.size() == 0) {
-            System.out.println("No Crew is added yet");
-            return;
-        }
-        for (Crew Crew : Crews) {
-            System.out.println(MessageFormat.format("-{0} ->{1}", Crew.getName(), Crew.getJob()));
-        }
+    @Override
+    public String toString() {
+        return "ScheduledFlight [date=" + date + ", flight=" + flight + ", price=" + price + ", currentcapacity="
+                + currentcapacity + ", maxcapacity=" + maxcapacity + ", passengers=" + passengers + ", Employees="
+                + Employees
+                + "]";
     }
+
+    public ScheduledFlight() {
+        super();
+    }
+
+    public ScheduledFlight(Date date, Flight flight, double price, int maxcapacity) {
+        this.date = date;
+        this.flight = flight;
+        this.price = price;
+        this.maxcapacity = maxcapacity;
+    }
+
 }

@@ -1,4 +1,5 @@
 package Model;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;;
 
@@ -49,4 +50,13 @@ public class Reservation {
     public Reservation() {
         this.reservationid = count.incrementAndGet();
     }
+
+    public Reservation(int reservationid, Passenger passenger, ScheduledFlight scheduledFlight,
+            String seatno) {
+        this.reservationid = reservationid;
+        this.passenger = passenger;
+        this.scheduledFlight = scheduledFlight;
+        this.seatno = seatno;
+    }
+
 }

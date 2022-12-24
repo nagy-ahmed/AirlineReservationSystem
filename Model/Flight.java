@@ -1,4 +1,5 @@
 package Model;
+
 public class Flight {
     private int number;
     private Airport departure;
@@ -26,6 +27,20 @@ public class Flight {
 
     public Airport getArrival() {
         return arrival;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight [number=" + number + ", departure=" + departure + ", arrival=" + arrival + "]";
+    }
+
+    public Flight() {
+    }
+
+    public Flight(int number, Airport departure, Airport arrival) {
+        this.number = number;
+        this.departure = departure;
+        this.arrival = arrival;
     }
 
 }

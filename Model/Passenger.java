@@ -1,6 +1,6 @@
 package Model;
 
-public class Passenger extends User {
+public class Passenger extends Person {
     private int creditcardnumber;
 
     public int getCreditcardnumber() {
@@ -11,10 +11,19 @@ public class Passenger extends User {
         this.creditcardnumber = creditcardnumber;
     }
 
-    public Passenger() {
-        super.setUsername("123");
-        ;
-        super.setPassword("123");
-        ;
+    @Override
+    public String toString() {
+        return "Passenger [" + super.toString() + ", creditcardnumber=" + creditcardnumber + "]";
     }
+
+    public Passenger() {
+        super();
+    }
+
+    public Passenger(int nationalId, String username, String password, String fName, String lName, String address,
+            int creditcardnumber) {
+        super(nationalId, username, password, fName, lName, address);
+        this.creditcardnumber = creditcardnumber;
+    }
+
 }

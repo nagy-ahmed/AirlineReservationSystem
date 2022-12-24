@@ -29,4 +29,19 @@ public class Airport {
         return location;
     }
 
+    @Override
+    public String toString() {
+        return "Airport [name=" + name + ", code=" + code + ", location=" + location + "]";
+    }
+
+    public Airport() {
+
+    }
+
+    public Airport(String name, String code, String location) {
+        this.name = name;
+        this.code = code;
+        this.location = location;
+    }
+
 }
