@@ -3,7 +3,10 @@ package Model;
 import java.text.MessageFormat;
 import java.util.*;
 
+import lib.Color;
+
 public class ScheduledFlight {
+    private int number;
     private Date date;
     private Flight flight;
     private double price;
@@ -11,6 +14,14 @@ public class ScheduledFlight {
     private int maxcapacity;
     private Set<Passenger> passengers = new HashSet<Passenger>();
     private Set<Employee> Employees = new HashSet<Employee>();
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 
     public void setMaxcapacity(int maxcapacity) {
         if (maxcapacity <= 0) {
@@ -61,7 +72,7 @@ public class ScheduledFlight {
     }
 
     public void getPassengers() {
-        System.out.println(MessageFormat.format("Passengers of flight : {0} is", flight.getNumber()));
+        System.out.println(MessageFormat.format("Passengers of flight : {0} is", getNumber()));
         if (passengers == null || passengers.size() == 0) {
             System.out.println("No Passenger is added yet");
             return;
@@ -74,7 +85,7 @@ public class ScheduledFlight {
     }
 
     public void getEmployees() {
-        System.out.println(MessageFormat.format("Employee of flight : {0} is", flight.getNumber()));
+        System.out.println(MessageFormat.format("Employee of flight : {0} is", getNumber()));
         if (Employees == null || Employees.size() == 0) {
             System.out.println("No Employee is added yet");
             return;
@@ -116,8 +127,9 @@ public class ScheduledFlight {
     }
 
     public void GetDescription() {
-        System.out.println("Welcome");
-        System.out.println(MessageFormat.format("Flight with Number {0}", flight.getNumber()));
+        System.out
+                .println(MessageFormat.format(Color.BLUE + "\nFlight with Number {0}" + Color.RESET,
+                        getNumber()));
         System.out.println(MessageFormat.format("Go from {0} to {1}", flight.getDeparture(), flight.getArrival()));
         System.out.println(MessageFormat.format("on {0} ,its Price :{1}", date, price));
         System.out.println(MessageFormat.format("Max Capacity is {0} Current is {1}", maxcapacity, currentcapacity));
@@ -125,17 +137,16 @@ public class ScheduledFlight {
 
     @Override
     public String toString() {
-        return "ScheduledFlight [date=" + date + ", flight=" + flight + ", price=" + price + ", currentcapacity="
-                + currentcapacity + ", maxcapacity=" + maxcapacity + ", passengers=" + passengers + ", Employees="
-                + Employees
-                + "]";
+        GetDescription();
+        return "";
     }
 
     public ScheduledFlight() {
         super();
     }
 
-    public ScheduledFlight(Date date, Flight flight, double price, int maxcapacity) {
+    public ScheduledFlight(int number, Date date, Flight flight, double price, int maxcapacity) {
+        this.number = number;
         this.date = date;
         this.flight = flight;
         this.price = price;

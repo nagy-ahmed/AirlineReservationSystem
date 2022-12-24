@@ -1,19 +1,11 @@
 package Model;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;;
 
 public class Reservation {
-    private int reservationid;
     private Date date;
     private Passenger passenger;
     private ScheduledFlight scheduledFlight;
-    private String seatno;
-    private static final AtomicInteger count = new AtomicInteger(0);
-
-    public int getReservationid() {
-        return reservationid;
-    }
 
     public Date getDate() {
         return date;
@@ -39,24 +31,14 @@ public class Reservation {
         this.scheduledFlight = scheduledFlight;
     }
 
-    public String getSeatno() {
-        return seatno;
+    @Override
+    public String toString() {
+        return "Reservation [date=" + date + ", passenger=" + passenger + ", scheduledFlight=" + scheduledFlight + "]";
     }
 
-    public void setSeatno(String seatno) {
-        this.seatno = seatno;
-    }
-
-    public Reservation() {
-        this.reservationid = count.incrementAndGet();
-    }
-
-    public Reservation(int reservationid, Passenger passenger, ScheduledFlight scheduledFlight,
-            String seatno) {
-        this.reservationid = reservationid;
+    public Reservation(Passenger passenger, ScheduledFlight scheduledFlight) {
         this.passenger = passenger;
         this.scheduledFlight = scheduledFlight;
-        this.seatno = seatno;
     }
 
 }

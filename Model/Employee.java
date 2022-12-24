@@ -31,7 +31,8 @@ public class Employee extends Person {
     }
 
     public Employee() {
-        super();
+        super.setPassword("123");
+        ;
     }
 
     public Employee(int nationalId, String username, String password, String fName, String lName, String address,

@@ -1,7 +1,10 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Passenger extends Person {
     private int creditcardnumber;
+    public ArrayList<Reservation> reservations = new ArrayList<>();
 
     public int getCreditcardnumber() {
         return creditcardnumber;
@@ -17,7 +20,7 @@ public class Passenger extends Person {
     }
 
     public Passenger() {
-        super();
+        super.setPassword("123");
     }
 
     public Passenger(int nationalId, String username, String password, String fName, String lName, String address,

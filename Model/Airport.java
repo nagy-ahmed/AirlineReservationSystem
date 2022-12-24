@@ -31,7 +31,7 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport [name=" + name + ", code=" + code + ", location=" + location + "]";
+        return "Airport [name=" + name + ", location=" + location + "]";
     }
 
     public Airport() {

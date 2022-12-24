@@ -1,3 +1,5 @@
+package lib;
+
 public class Color {
     // reset
     public static final String RESET = "\u001B[0m";
