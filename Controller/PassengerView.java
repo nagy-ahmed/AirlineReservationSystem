@@ -20,12 +20,7 @@ public class PassengerView {
                 ViewFlights();
                 return true;
             case 3:
-                System.out.println("Please enter the flight number");
-                int number = (int) Methods.EnteredValue();
-                if (!StartView.dbcontext.MakeReservation(p, number))
-                    System.out.println("sorry but you can't book this flight");
-                else
-                    System.out.println("Success");
+                MakeReservation(p);
                 return true;
             case 4:
                 ViewMyHistory(p);
@@ -45,6 +40,15 @@ public class PassengerView {
 
     public static void ViewFlights() {
         System.out.println(StartView.dbcontext.scheduledFlights());
+    }
+
+    public static void MakeReservation(Passenger p) {
+        System.out.println("Please enter the flight number");
+        int number = (int) Methods.EnteredValue();
+        if (!StartView.dbcontext.MakeReservation(p, number))
+            System.out.println("sorry but you can't book this flight");
+        else
+            System.out.println("Success");
     }
 
     public static void ViewMyHistory(Passenger p) {
