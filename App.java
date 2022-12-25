@@ -25,7 +25,6 @@ public class App {
                     break;
                 case "Model.Employee":
                     System.out.println(currentUser.toString());
-
                     break;
                 case "Model.Passenger":
                     Passenger p = (Passenger) currentUser;
