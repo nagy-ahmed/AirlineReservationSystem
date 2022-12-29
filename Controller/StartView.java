@@ -104,7 +104,7 @@ public class StartView {
             }
 
         } else if (ch == 0) {
-            return "Exist";
+            return "Exit";
         }
         return null;
 
